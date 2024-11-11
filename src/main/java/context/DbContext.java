@@ -3,20 +3,18 @@ import java.sql.*;
 
 public class DbContext {
     
-    private final String serverName = "localhost";
-    private final String dbName = "BanSachDB";
-    private final String portNumber = "1433";  
-    private final String userID = "sa";
-    private final String password = "sa";
+    private static String serverName = "localhost";
+    private static String dbName = "BanSachDB";
+    private static String portNumber = "1433";  
+    private static String userID = "sa";
+    private static String password = "sa";
     
-    public Connection getConnection()
+    public static Connection getConnection()
     {
         Connection conn=null;
         try{ 
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            //b2. dinh nghia chuoi ket noi URL
             String url = "jdbc:sqlserver://" + serverName + ":" + portNumber + ";databaseName=" + dbName;
-            //b3.Thiet lap ket noi
             conn = DriverManager.getConnection(url,userID,password);       
         }catch(Exception ex){
             System.out.println("Error:" + ex.toString());
