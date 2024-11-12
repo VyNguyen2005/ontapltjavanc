@@ -29,31 +29,31 @@
                             if (dsSach != null && !dsSach.isEmpty()) {
                                 for (Sach sach : dsSach) {
                         %>
-                                    <div class="col-12 col-md-6 col-lg-4">
-                                        <div class="card mb-2">
-                                            <div class="card-header">
-                                                <%= sach.getTensach() %>
-                                            </div>
-                                            <div class="card-body">
-                                                <img class="card-img" src="assets/images/products/<%= sach.getHinh() %>" alt="Card image cap">                         
-                                            </div>
-                                            <div class="card-footer">
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <p class="btn btn-danger btn-block"><%= fmt.format(sach.getDongia()) %></p>
-                                                    </div>
-                                                    <div class="col text-end">
-                                                        <a href="#" class="btn btn-success btn-block">Add to cart</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>              
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card mb-2">
+                                <div class="card-header">
+                                    <%= sach.getTensach()%>
+                                </div>
+                                <div class="card-body">
+                                    <img class="card-img" src="assets/images/products/<%= sach.getHinh()%>" alt="Card image cap">                         
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="btn btn-danger btn-block"><%= fmt.format(sach.getDongia())%></p>
+                                        </div>
+                                        <div class="col text-end">
+                                            <a href="#" class="btn btn-success btn-block">Add to cart</a>
+                                        </div>
                                     </div>
+                                </div>
+                            </div>              
+                        </div>
                         <%
-                                }
-                            } else {
+                            }
+                        } else {
                         %>
-                                <div class="text-danger">Không có sản phẩm nào</div>
+                        <div class="text-danger">Không có sản phẩm nào</div>
                         <%
                             }
                         %>

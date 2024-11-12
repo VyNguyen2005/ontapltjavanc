@@ -5,6 +5,7 @@
 package controller;
 
 import dao.ChuDeDAO;
+import dao.NhaXuatBanDAO;
 import dao.SachDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -36,14 +37,24 @@ public class ProductServlet extends HttpServlet {
         
         ChuDeDAO chudeDAO = new ChuDeDAO();
         SachDAO sachDAO = new SachDAO();
+        NhaXuatBanDAO nxbDAO = new NhaXuatBanDAO();
         
-        int macd = 1;
-        if(request.getParameter("macd") != null){
-           macd = Integer.parseInt(request.getParameter("macd"));
+//        int macd = 1;
+//        if(request.getParameter("macd") != null){
+//           macd = Integer.parseInt(request.getParameter("macd"));
+//        }
+        
+        int manxb = 1; // Mặc định là mã nhà xuất bản 1
+        if (request.getParameter("manxb") != null) {
+            manxb = Integer.parseInt(request.getParameter("manxb"));
         }
-        
-        request.setAttribute("dsChuDe", chudeDAO.getAll());
-        request.setAttribute("dsSach", sachDAO.getByCategory(macd));
+
+        request.setAttribute("dsNhaXuatBan", nxbDAO.getAll()); // Lấy tất cả nhà xuất bản
+        request.setAttribute("dsSach", sachDAO.getByCategoryNXB(manxb)); // Lấy sách theo mã nhà xuất bản
+
+        //request.setAttribute("dsChuDe", chudeDAO.getAll());
+//        request.setAttribute("dsSach", sachDAO.getByCategory(macd));
+
         request.getRequestDispatcher("product.jsp").forward(request, response);
     }
 

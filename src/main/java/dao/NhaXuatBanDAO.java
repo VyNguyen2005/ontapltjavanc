@@ -9,30 +9,30 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import model.ChuDe;
+import model.NhaXuatBan;
 
 /**
  *
  * @author nguye
  */
-public class ChuDeDAO {
+public class NhaXuatBanDAO {
     
     Connection conn;
     PreparedStatement ps;
     ResultSet rs;
-
-    public ArrayList<ChuDe> getAll() {
-        ArrayList<ChuDe> ds = new ArrayList<>();
-        String sql = "select * from ChuDe";
-        conn = DbContext.getConnection();
+    
+    public ArrayList<NhaXuatBan> getAll(){
+       ArrayList<NhaXuatBan> ds = new ArrayList<>();
+       String sql = "select * from NhaXuatBan";
+       conn = DbContext.getConnection();
         try {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
-            while (rs.next()) {
-                ds.add(new ChuDe(rs.getInt(1),rs.getString(2)));
+            while(rs.next()){
+               ds.add(new NhaXuatBan(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)));
             }
-        } catch (Exception ex) {
-            System.out.println("Loi:" + ex.toString());
+        } catch (Exception e) {
+            System.out.println("Loi: " +e.toString());
         }
         return ds;
     }
